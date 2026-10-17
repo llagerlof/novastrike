@@ -1,0 +1,36 @@
+# NOVA STRIKE has no build step, dependencies or asset files: everything that
+# ships is in index.html and src/. Ignore only local tooling and test output.
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node, if used to validate song data or drive headless Chromium
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Headless browser testing: profiles, screenshots, recordings, audio dumps
+.chrome-profile/
+chrome-profile/
+screenshots/
+*.png
+*.gif
+*.webm
+*.wav
+
+# Scratch files
+*.log
+tmp/
+scratch/
+
+# Local agent settings
+.claude/settings.local.json

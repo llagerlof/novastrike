@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Nova Strike</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #05060d;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #wrap {
+    position: relative;
+    line-height: 0;
+    box-shadow: 0 0 60px rgba(44, 232, 245, 0.08), 0 0 0 1px #1a1c2c;
+  }
+  #game {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    touch-action: none;
+    cursor: none;
+  }
+  #fileWarning {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: #05060d;
+    color: #c7dcd0;
+    font: 15px/1.5 monospace;
+    text-align: center;
+  }
+  #fileWarning[hidden] { display: none; }
+  #fileWarning pre { background: #1a1c2c; color: #fee761; padding: 8px 14px; }
+  /* subtle CRT scanlines */
+  #wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,0.13) 3px);
+    mix-blend-mode: multiply;
+  }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="game"></canvas></div>
+<div id="fileWarning" hidden>
+  <p><b>NOVA STRIKE</b> is built from ES modules, and browsers block those on <code>file://</code> pages.</p>
+  <p>Serve the folder instead, then open <code>http://localhost:8000</code>:</p>
+  <pre>python3 -m http.server</pre>
+</div>
+<script>
+  if (location.protocol === 'file:') document.getElementById('fileWarning').hidden = false;
+</script>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
